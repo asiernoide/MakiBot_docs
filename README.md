@@ -1,5 +1,7 @@
 # MakiBot documentation
 
+This is a web application made with the Pynecone framework, which I exported to a static webpage and deployed to Netlify in <https://makibot.netlify.app/>. This webpage contains info about all commands available for the MakiBot bot.
+
 ## License
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
