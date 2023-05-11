@@ -1,0 +1,14 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "asiernoide"},
+]
+dependencies = [
+    "pynecone>=0.1.29",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}

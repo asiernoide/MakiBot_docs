@@ -1,0 +1,56 @@
+{
+    "Utilidades": [
+        {
+            "name": "/help",
+            "description": "Muestra este mensaje de ayuda."
+        },
+        {
+            "name": "/invite `[duración]`",
+            "description": "Envía una invitación a este servidor. Puedes especificar una duración para la invitación (en días). Si eliges \"0\", la invitación no caducará. (PD: Se necesitan permisos para crear invitaciones para usar este comando.)"
+        },
+        {
+            "name": "/vote `enunciado` `opcion_1` `[opcion_2]` `[opcion_3]` `[opcion_4]`",
+            "description": "Crea una votación con hasta 4 opciones."
+        },
+        {
+            "name": "/roll `caras`",
+            "description": "Tira un dado de `n` caras."
+        },
+        {
+            "name": "/coinflip",
+            "description": "Tira una moneda."
+        }
+    ],
+    "Entretenimiento": [
+        {
+            "name": "/meme",
+            "description": "Envía un meme aleatorio."
+        },
+        {
+            "name": "/waifu `obra`",
+            "description": "¿Cuál es tu waifu/husbando? Elige un personaje aleatorio de una obra a tu elección (o de todas)."
+        },
+        {
+            "name": "/neverhaveiever `[categoría]`",
+            "description": "Juega un Yo Nunca (solo disponible en inglés). Puedes especificar una categoría. Si no se especifica, se escogen preguntas de entre todas."
+        },
+        {
+            "name": "/kissmarrykill `obra`",
+            "description": "Juega a Kiss/Marry/Kill con personajes aleatorios de una obra a tu elección (o de todas)."
+        },
+        {
+            "name": "/scp",
+            "description": "Envía un SCP aleatorio (ADVERTENCIA: Este comando es experimental y no funciona correctamente el 100% de las veces)."
+        },
+        {
+            "name": "/8ball `pregunta`",
+            "description": "Pregunta a la bola mágica."
+        }
+    ],
+    "NSFW": [
+        {
+            "name": "/shitpost",
+            "description": "Envía un copypasta aleatorio."
+        }
+    ]
+}
