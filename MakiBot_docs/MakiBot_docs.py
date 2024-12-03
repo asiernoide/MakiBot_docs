@@ -20,7 +20,7 @@ class State(rf.State):
 def get_command(item):
     return rf.box(
         rf.markdown(
-            item['name'],
+            "**" + item['name'] + "**",
             as_="b",
             style={"fontSize": "0.8em", "lineHeight": "0.5em", "margin": "0", "padding": "0"}, # Adjust line height
             component_map={"code": lambda text: rf.code(text, color_scheme="ruby")}
@@ -65,15 +65,17 @@ def index() -> rf.Component:
             
             # Add different cards for each command category for the discord bot
             rf.grid(
-                rf.vstack(
+                rf.card(
                     rf.heading(
                         "Utilidades",
                         font_size="1.1em",
+                        align="center"
                     ),
                     rf.text(
                         "Comandos para hacer tu vida un poco más fácil",
-                        font_size="0.8em",
-                        as_="em",
+                        font_size="0.7em",
+                        align="center",
+                        font_style="italic"
                     ),
                     rf.foreach(State.util_commands, get_command),
                     background_color="#444444",
@@ -81,15 +83,17 @@ def index() -> rf.Component:
                     box_shadow="8px 8px 6px 1px #333333",
                     border_radius="10px",
                 ),
-                rf.vstack(
+                rf.card(
                     rf.heading(
                         "Entretenimiento",
                         font_size="1.1em",
+                        align="center"
                     ),
                     rf.text(
                         "Comandos para pasar el rato",
-                        font_size="0.8em",
-                        as_="em",
+                        font_size="0.7em",
+                        align="center",
+                        font_style="italic"
                     ),
                     rf.foreach(State.ent_commands, get_command),
                     background_color="#444444",
@@ -97,15 +101,17 @@ def index() -> rf.Component:
                     box_shadow="8px 8px 6px 1px #333333",
                     border_radius="10px",
                 ),
-                rf.vstack(
+                rf.card(
                     rf.heading(
                         "NSFW",
                         font_size="1.1em",
+                        align="center"
                     ),
                     rf.text(
                         "Comandos para los más atrevidos",
-                        font_size="0.8em",
-                        as_="em",
+                        font_size="0.7em",
+                        align="center",
+                        font_style="italic"
                     ),
                     rf.foreach(State.nsfw_commands, get_command),
                     background_color="#444444",
@@ -114,7 +120,10 @@ def index() -> rf.Component:
                     border_radius="10px",
                 ),
                 grid_template_columns=[
-                    "1fr"
+                    "1fr",
+                    "1fr",
+                    "1fr",
+                    "repeat(3, 1fr)"
                 ],
                 gap="2rem",
                 padding_left="0.5em",
@@ -147,24 +156,7 @@ def index() -> rf.Component:
         )
 
 
-
-styles = {
-    "global": {
-        "rt-Text": {
-            "margin": "0 !important",
-            "padding": "0 !important",
-        },
-        "css-56tzch": {
-            "margin": "0 !important",
-            "padding": "0 !important",
-        },
-        "p": {
-            "margin": "0 !important",
-        }
-    }
-}
-
 # Add state and page to the app.
-app = rf.App(state=State, style=styles)
+app = rf.App(state=State, stylesheets=["styles.css"])
 app.add_page(index, meta=[{"char_set": "UTF-8"}], title="Comandos de MakiBot", image="/iconbook.png", route="/")
 app._compile()
