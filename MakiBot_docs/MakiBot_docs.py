@@ -1,4 +1,4 @@
-import pynecone as pc
+import reflex as rf
 import json
 
 # Load commands from json file to a dictionary
@@ -11,39 +11,42 @@ with open("commands.json", "r", encoding="utf-8") as f:
 if commands is None:
     raise Exception("The commands file is empty!")
 
-class State(pc.State):
+class State(rf.State):
     """The app state."""
     util_commands: list[dict[str, str]] = commands['Utilidades']
     ent_commands: list[dict[str, str]] = commands['Entretenimiento']
     nsfw_commands: list[dict[str, str]] = commands['NSFW']
 
 def get_command(item):
-    return pc.box(
-        pc.text(
+    return rf.box(
+        rf.markdown(
             item['name'],
-            font_size="0.8em",
             as_="b",
+            style={"fontSize": "0.8em", "lineHeight": "0.5em", "margin": "0", "padding": "0"}, # Adjust line height
+            component_map={"code": lambda text: rf.code(text, color_scheme="ruby")}
         ),
-        pc.text(
+        rf.markdown(
             item['description'],
-            font_size="0.5em",
+            style={"fontSize": "0.5em", "lineHeight": "0.5em", "margin": "0", "padding": "0"}, # Adjust line height
+            component_map={"code": lambda text: rf.code(text, color_scheme="ruby")}
         ),
         width="100%",
     )
 
-def index() -> pc.Component:
-    return pc.vstack(
-            pc.box(
-                pc.center(
-                    pc.heading(
+def index() -> rf.Component:
+    return rf.vstack(
+            rf.box(
+                rf.center(
+                    rf.heading(
                     "¡Bienvenido a la página de ayuda de MakiBot!",
                     color="white",
                     font_size="1.5em",
+                    line_height="1",
                     background_image="linear-gradient(271.68deg, #EE756A 0.75%, #756AEE 88.52%)",
                     background_clip="text",
                     ),
                 ),
-                pc.image(
+                rf.image(
                     src="/icon.png",
                     width="200px",
                     height="auto",
@@ -54,90 +57,114 @@ def index() -> pc.Component:
                 background_position="center",
                 width="100%",
 
-                # Add a bit of padding to the left
+                # Add a bit of padding to the sides
                 padding_left="2em",
                 padding_right="2em",
                 padding_top="1em",
             ),
             
             # Add different cards for each command category for the discord bot
-            pc.responsive_grid(
-                pc.vstack(
-                    pc.heading(
+            rf.grid(
+                rf.vstack(
+                    rf.heading(
                         "Utilidades",
                         font_size="1.1em",
                     ),
-                    pc.text(
+                    rf.text(
                         "Comandos para hacer tu vida un poco más fácil",
                         font_size="0.8em",
                         as_="em",
                     ),
-                    pc.foreach(State.util_commands, get_command),
-                    # Change bg property to #333333
+                    rf.foreach(State.util_commands, get_command),
                     background_color="#444444",
                     padding="1em",
-                    shadow="lg",
-                    border_radius="lg",
+                    box_shadow="8px 8px 6px 1px #333333",
+                    border_radius="10px",
                 ),
-                pc.vstack(
-                    pc.heading(
+                rf.vstack(
+                    rf.heading(
                         "Entretenimiento",
                         font_size="1.1em",
                     ),
-                    pc.text(
+                    rf.text(
                         "Comandos para pasar el rato",
                         font_size="0.8em",
                         as_="em",
                     ),
-                    pc.foreach(State.ent_commands, get_command),
+                    rf.foreach(State.ent_commands, get_command),
                     background_color="#444444",
                     padding="1em",
-                    shadow="lg",
-                    border_radius="lg",
+                    box_shadow="8px 8px 6px 1px #333333",
+                    border_radius="10px",
                 ),
-                pc.vstack(
-                    pc.heading(
+                rf.vstack(
+                    rf.heading(
                         "NSFW",
                         font_size="1.1em",
                     ),
-                    pc.text(
+                    rf.text(
                         "Comandos para los más atrevidos",
                         font_size="0.8em",
                         as_="em",
                     ),
-                    pc.foreach(State.nsfw_commands, get_command),
+                    rf.foreach(State.nsfw_commands, get_command),
                     background_color="#444444",
                     padding="1em",
-                    shadow="lg",
-                    border_radius="lg",
+                    box_shadow="8px 8px 6px 1px #333333",
+                    border_radius="10px",
                 ),
-                columns=[1, 1, 3],
-                spacing="5",
+                grid_template_columns=[
+                    "1fr"
+                ],
+                gap="2rem",
                 padding_left="0.5em",
                 padding_right="0.5em",
                 color="white",
             ),
-            pc.center(
-                pc.vstack(
-                    # Copyright disclaimer
-                    pc.text(
-                        "© 2023 Asier Gallego Roca. Todos los derechos reservados."
+            rf.box(
+                rf.center(
+                    rf.vstack(
+                        # Copyright disclaimer
+                        rf.text(
+                            "© 2023 Asier Gallego Roca. Todos los derechos reservados."
+                        ),
+                        rf.markdown(
+                            "Esta página ha sido creada con el framework [Reflex](https://reflex.dev/)."
+                        ),
+                        font_size="0.5em",
+                        padding_bottom="0.5em",
+                        align="center"
                     ),
-                    pc.text(
-                        "Esta página ha sido creada con el framework Pynecone."
-                    ),
-                    font_size="0.5em",
-                    padding_bottom="0.5em",
+                    color="white",
                 ),
-                color="white",
+                width="100%",
+                padding="1em",
             ),
-            spacing="1.5em",
+            gap="1em",
             font_size="2em",
             background_image="linear-gradient(271.68deg, #EE756A 0.75%, #756AEE 88.52%)",
+            align="center"
         )
 
 
+
+styles = {
+    "global": {
+        "rt-Text": {
+            "margin": "0 !important",
+            "padding": "0 !important",
+        },
+        "css-56tzch": {
+            "margin": "0 !important",
+            "padding": "0 !important",
+        },
+        "p": {
+            "margin": "0 !important",
+        }
+    }
+}
+
 # Add state and page to the app.
-app = pc.App(state=State)
+app = rf.App(state=State, style=styles)
 app.add_page(index, meta=[{"char_set": "UTF-8"}], title="Comandos de MakiBot", image="/iconbook.png", route="/")
-app.compile()
+app._compile()

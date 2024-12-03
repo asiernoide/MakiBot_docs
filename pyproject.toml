@@ -1,14 +1,14 @@
 [tool.pdm]
 
 [project]
-name = ""
-version = ""
-description = ""
+name = "MakiBot_docs"
+version = "2.0"
+description = "Official documentation for the MakiBot bot"
 authors = [
     {name = "asiernoide"},
 ]
 dependencies = [
-    "pynecone>=0.1.29",
+    "reflex>=0.6.5",
 ]
 requires-python = ">=3.10"
 license = {text = "CC-BY-SA-4.0", file = "LICENSE"}
