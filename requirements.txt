@@ -10,7 +10,7 @@ gunicorn==22.0.0
 h11==0.14.0
 httpcore==0.16.3
 httpx==0.23.3
-idna==3.4
+idna==3.7
 packaging==23.1
 plotly==5.14.1
 psutil==5.9.5
