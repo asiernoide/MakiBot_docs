@@ -1,6 +1,6 @@
 # MakiBot documentation
 
-This is a web application made with the Reflex framework, which I deployed using Reflex itself in <https://makibot-docs.reflex.run/>. This webpage contains info about all commands available for the MakiBot Discord bot.
+This is a web application made with the Reflex framework, which I deployed using Reflex itself in <https://makibot_docs-navy-grass.reflex.run/>. This webpage contains info about all commands available for the MakiBot Discord bot.
 An old version using Pynecone (the old version of Reflex) is also available at <https://makibot.netlify.app/>.
 
 ## License
